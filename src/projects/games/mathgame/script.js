@@ -2,7 +2,7 @@ let score = 0;
 let currentQuestion;
 
 function startTimer() {
-    let timeLeft = 10; 
+    let timeLeft = 15; 
     document.getElementById('timer').innerText = `Timer: ${timeLeft}s`;
     timer = setInterval(() => {
         timeLeft--;
@@ -20,13 +20,29 @@ function startTimer() {
     }, 1000);
 }
 
+function selectOperation() {
+    const rand = Math.random() * 10;
+    let operation;
+
+    if (rand < 4) {
+        operation = '*';  
+    } else if (rand < 6) {
+        operation = '+';  
+    } else {
+        operation = '-';  
+    }
+
+    return operation;
+}
+
+
 function generateQuestion() {
     const num1 = Math.floor(Math.random() * 10) + 1;
     const num2 = Math.floor(Math.random() * 10) + 1;
-    const operation = Math.random() < 0.5 ? '+' : '-';
+    const operation = selectOperation();
     currentQuestion = {
         question: `${num1} ${operation} ${num2}`,
-        answer: operation === '+' ? num1 + num2 : num1 - num2
+        answer: operation === '*' ? num1 * num2 : operation === '-' ?  num1 - num2 : num1 + num2 
     };
 
     document.getElementById('question').innerText = currentQuestion.question;
