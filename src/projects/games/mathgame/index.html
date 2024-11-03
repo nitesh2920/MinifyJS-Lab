@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h1 class="text-2xl  mb-4 text-center">Guess the answer</h1>
+        <div id="question" class="text-xl mb-4 font-bold text-center"></div>
+        <input type="number" id="answer" placeholder="Your answer" class="border rounded p-2 w-full mb-4" />
+        <button id="submit" class="bg-blue-500 text-white rounded p-2 w-full">Submit</button>
+        <div id="result" class="mt-4 text-center"></div>
+        <div id="score" class="mt-2 text-center font-semibold">Score: 0</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
