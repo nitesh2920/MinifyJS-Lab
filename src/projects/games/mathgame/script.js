@@ -3,10 +3,10 @@ let currentQuestion;
 
 function startTimer() {
     let timeLeft = 10; 
-    document.getElementById('timer').innerText = `Time: ${timeLeft}s`;
+    document.getElementById('timer').innerText = `Timer: ${timeLeft}s`;
     timer = setInterval(() => {
         timeLeft--;
-        document.getElementById('timer').innerText = `Time: ${timeLeft}s`;
+        document.getElementById('timer').innerText = `Timer: ${timeLeft}s`;
         if (timeLeft <= 0) {
             clearInterval(timer);
             const ResultBox = document.getElementById('result');
@@ -38,11 +38,12 @@ document.getElementById('submit').onclick = function () {
     const userAnswer = parseInt(document.getElementById('answer').value);
     const ResultBox = document.getElementById('result');
     if (userAnswer === currentQuestion.answer) {
-        score++;
+        score+=2;
         ResultBox.innerText = 'Correct!';
         ResultBox.classList.remove('text-red-500');
         ResultBox.classList.add('text-green-500');
     } else {
+        score-=1;
         ResultBox.innerText = 'Wrong! The correct answer was ' + currentQuestion.answer;
         ResultBox.classList.remove('text-green-500');
         ResultBox.classList.add('text-red-500');
