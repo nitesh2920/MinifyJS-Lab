@@ -7,7 +7,7 @@
   },
   {
     "title": "Guess IT",
-    "description": "Simple math game to test your speed and acurracy in basic calculation.",
+    "description": "Simple math game to test your speed and accuracy in basic calculation.",
     "image": "./public/assets/images/mathquiz.png",
     "link": "./src/projects/games/mathgame/index.html"
   }
