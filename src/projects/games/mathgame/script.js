@@ -1,8 +1,10 @@
 let score = 0;
 let currentQuestion;
+let totalCorrect = 0;
+let totalIncorrect = 0;
 
 function startTimer() {
-    let timeLeft = 15; 
+    let timeLeft = 13; 
     document.getElementById('timer').innerText = `Timer: ${timeLeft}s`;
     timer = setInterval(() => {
         timeLeft--;
@@ -21,9 +23,8 @@ function startTimer() {
 }
 
 function selectOperation() {
-    const rand = Math.random() * 10;
+    const rand = Math.floor(Math.random() * 10) + 1;
     let operation;
-
     if (rand < 4) {
         operation = '*';  
     } else if (rand < 6) {
@@ -31,7 +32,6 @@ function selectOperation() {
     } else {
         operation = '-';  
     }
-
     return operation;
 }
 
@@ -55,14 +55,18 @@ document.getElementById('submit').onclick = function () {
     const ResultBox = document.getElementById('result');
     if (userAnswer === currentQuestion.answer) {
         score+=2;
+        totalCorrect++;
         ResultBox.innerText = 'Correct!';
         ResultBox.classList.remove('text-red-500');
         ResultBox.classList.add('text-green-500');
+        document.getElementById('totalCorrect').innerText = `Correct - ${totalCorrect}`;
     } else {
         score-=1;
-        ResultBox.innerText = 'Wrong! The correct answer was ' + currentQuestion.answer;
+        totalIncorrect++;
+        ResultBox.innerText = `Wrong! The correct answer was ( ${currentQuestion.answer} ) for prev ques`;
         ResultBox.classList.remove('text-green-500');
         ResultBox.classList.add('text-red-500');
+        document.getElementById('totalIncorrect').innerText = `Incorrect - ${totalIncorrect}`;
     }
     document.getElementById('score').innerText = 'Score: ' + score;
     document.getElementById('answer').value = '';
